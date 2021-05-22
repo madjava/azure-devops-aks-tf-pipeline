@@ -56,13 +56,7 @@ stages:
           runOnce:
             deploy:
               steps:
-                - task: Checking Out
-                  - checkout: self  # self represents the repo where the initial Pipelines YAML file was found
-                    clean: true
-                    fetchDepth: 5
-                    lfs: true
-                      - script: dir $(Pipeline.Workspace)
-                  - script: dir $(Pipeline.Workspace)
+                - checkout: self
                 - task: DownloadSecureFile@1
                   displayName: Download SSH Key
                   name: sshkey
