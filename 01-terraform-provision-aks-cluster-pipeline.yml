@@ -58,14 +58,14 @@ stages:
               steps:
                 - task: DownloadSecureFile@1
                   displayName: Download SSH Key
-                  name: sshKey
+                  name: sshkey
                   inputs:
                     secureFile: 'aks-terraform-devops-ssh-key-ububtu.pub'
                 - task: TerraformCLI@0
                   displayName: Terraform Init
                   inputs:
                     command: 'init'
-                    workingDirectory: '$(System.DefaultWorkingDirectory)/terraform-manifests'
+                    workingDirectory: '$(Pipeline.Workspace)/terraform-manifests-out'
                     backendType: 'azurerm'
                     backendServiceArm: 'terraform-aks-azurerm-svc-con'
                     backendAzureRmResourceGroupName: 'terraform-storage-rg'
