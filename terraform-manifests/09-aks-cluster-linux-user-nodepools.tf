@@ -1,10 +1,10 @@
 # Create Linux Azure AKS Node Pool
-/*
+
 resource "azurerm_kubernetes_cluster_node_pool" "linux101" {
   availability_zones    = [1]
   enable_auto_scaling   = true
   kubernetes_cluster_id = azurerm_kubernetes_cluster.aks_cluster.id
-  max_count             = 3
+  max_count             = 1
   min_count             = 1
   mode                  = "User"
   name                  = "linux101"
@@ -26,4 +26,3 @@ resource "azurerm_kubernetes_cluster_node_pool" "linux101" {
     "app"           = "java-apps"
   }
 }
-*/

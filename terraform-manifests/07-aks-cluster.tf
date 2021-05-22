@@ -13,7 +13,7 @@
   - node_labels
   - tags
 3. Enable MSI
-4. Add On Profiles 
+4. Add On Profiles
   - Azure Policy
   - Azure Monitor (Reference Log Analytics Workspace id)
 5. RBAC & Azure AD Integration
@@ -21,7 +21,7 @@
   - Windows Admin Profile
   - Linux Profile
 7. Network Profile
-8. Cluster Tags  
+8. Cluster Tags
 */
 
 resource "azurerm_kubernetes_cluster" "aks_cluster" {
@@ -38,7 +38,7 @@ resource "azurerm_kubernetes_cluster" "aks_cluster" {
     orchestrator_version = data.azurerm_kubernetes_service_versions.current.latest_version
     availability_zones   = [1]
     enable_auto_scaling  = true
-    max_count            = 3
+    max_count            = 2
     min_count            = 1
     os_disk_size_gb      = 30
     type                 = "VirtualMachineScaleSets"
