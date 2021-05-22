@@ -26,11 +26,6 @@ stages:
             displayName: Terraform Install
             inputs:
               terraformVersion: 'latest'
-          - task: Checkout
-            - checkout: self  # self represents the repo where the initial Pipelines YAML file was found
-              clean: true
-              fetchDepth: 5
-              lfs: true
           - task: TerraformCLI@0
             displayName: Terraform Init
             inputs:
@@ -61,6 +56,12 @@ stages:
           runOnce:
             deploy:
               steps:
+                - checkout: self  # self represents the repo where the initial Pipelines YAML file was found
+                  clean: true
+                  fetchDepth: 5
+                  lfs: true
+                    - script: dir $(Pipeline.Workspace)
+                - script: dir $(Pipeline.Workspace)
                 - task: DownloadSecureFile@1
                   displayName: Download SSH Key
                   name: sshkey
