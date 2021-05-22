@@ -63,6 +63,8 @@ stages:
                     secureFile: 'aks-terraform-devops-ssh-key-ububtu.pub'
                 - task: TerraformCLI@0
                   displayName: Terraform Init
+                  script: |
+                    echo ls -lrt '$(Pipeline.Workspace)/terraform-manifests-out'
                   inputs:
                     command: 'init'
                     workingDirectory: '$(Pipeline.Workspace)/terraform-manifests-out'
